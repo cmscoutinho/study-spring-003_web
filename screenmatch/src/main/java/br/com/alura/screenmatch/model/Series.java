@@ -10,15 +10,18 @@ import java.util.OptionalDouble;
 @Entity
 @Table(name = "series")
 public class Series {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String title;
-    private Integer seasons;
-    private Double rating;
     @Enumerated(EnumType.STRING)
-    private Categoria genre;
+    private Category genre;
+    private Integer seasons;
     private String actors;
+    private String releaseDate;
+    private Double rating;
     private String poster;
     private String plot;
 
