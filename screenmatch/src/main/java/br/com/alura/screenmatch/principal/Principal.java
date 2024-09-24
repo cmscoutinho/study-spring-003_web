@@ -116,7 +116,7 @@ public class Principal {
         System.out.println("Escolha uma série pelo nome");
         var nomeSerie = leitura.nextLine();
 
-        Optional<Series> serie = repositorio.findByTituloContainingIgnoreCase(nomeSerie);
+        Optional<Series> serie = repositorio.findByTitleContainingIgnoreCase(nomeSerie);
 
         if(serie.isPresent()) {
 
@@ -152,7 +152,7 @@ public class Principal {
     private void buscarSeriePorTitulo() {
         System.out.println("Escolha um série pelo nome: ");
         var nomeSerie = leitura.nextLine();
-        serieBusca = repositorio.findByTituloContainingIgnoreCase(nomeSerie);
+        serieBusca = repositorio.findByTitleContainingIgnoreCase(nomeSerie);
 
         if (serieBusca.isPresent()) {
             System.out.println("Dados da série: " + serieBusca.get());
@@ -168,14 +168,14 @@ public class Principal {
         var nomeAtor = leitura.nextLine();
         System.out.println("Avaliações a partir de que valor? ");
         var avaliacao = leitura.nextDouble();
-        List<Series> seriesEncontradas = repositorio.findByAtoresContainingIgnoreCaseAndAvaliacaoGreaterThanEqual(nomeAtor, avaliacao);
+        List<Series> seriesEncontradas = repositorio.findByActorsContainingIgnoreCaseAndRatingGreaterThanEqual(nomeAtor, avaliacao);
         System.out.println("Séries em que " + nomeAtor + " trabalhou: ");
         seriesEncontradas.forEach(s ->
                 System.out.println(s.getTitle() + " avaliação: " + s.getRating()));
     }
 
     private void buscarTop5Series() {
-        List<Series> seriesTop = repositorio.findTop5ByOrderByAvaliacaoDesc();
+        List<Series> seriesTop = repositorio.findTop5ByOrderByRatingDesc();
         seriesTop.forEach(s ->
                 System.out.println(s.getTitle() + " avaliação: " + s.getRating()));
     }
@@ -184,7 +184,7 @@ public class Principal {
         System.out.println("Deseja buscar séries de que categoria/gênero? ");
         var nomeGenero = leitura.nextLine();
         Categoria categoria = Categoria.fromPortugues(nomeGenero);
-        List<Series> seriesPorCategoria = repositorio.findByGenero(categoria);
+        List<Series> seriesPorCategoria = repositorio.findByGenre(categoria);
         System.out.println("Séries da categoria " + nomeGenero);
         seriesPorCategoria.forEach(System.out::println);
     }
@@ -196,7 +196,7 @@ public class Principal {
         System.out.println("Com avaliação a partir de que valor? ");
         var avaliacao = leitura.nextDouble();
         leitura.nextLine();
-        List<Series> filtroSeries = repositorio.seriesPorTemporadaEAValiacao(totalTemporadas, avaliacao);
+        List<Series> filtroSeries = repositorio.seriesBySeasonAndRating(totalTemporadas, avaliacao);
         System.out.println("*** Séries filtradas ***");
         filtroSeries.forEach(s ->
                 System.out.println(s.getTitle() + "  - avaliação: " + s.getRating()));
@@ -205,7 +205,7 @@ public class Principal {
     private void buscarEpisodioPorTrecho(){
         System.out.println("Qual o nome do episódio para busca?");
         var trechoEpisodio = leitura.nextLine();
-        List<Episode> episodiosEncontrados = repositorio.episodiosPorTrecho(trechoEpisodio);
+        List<Episode> episodiosEncontrados = repositorio.episodeBySnippet(trechoEpisodio);
         episodiosEncontrados.forEach(e ->
                 System.out.printf("Série: %s Temporada %s - Episódio %s - %s\n",
                         e.getSeries().getTitle(), e.getSeason(),

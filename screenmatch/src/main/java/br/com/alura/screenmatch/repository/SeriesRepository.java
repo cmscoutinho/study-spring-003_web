@@ -10,19 +10,21 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SeriesRepository extends JpaRepository<Series, Long> {
-    Optional<Series> findByTituloContainingIgnoreCase(String nomeSerie);
+    Optional<Series> findByTitleContainingIgnoreCase(String seriesName);
 
-    List<Series> findByAtoresContainingIgnoreCaseAndAvaliacaoGreaterThanEqual(String nomeAtor, double avaliacao);
+    List<Series> findByActorsContainingIgnoreCaseAndRatingGreaterThanEqual(String actorName, double rating);
 
-    List<Series> findTop5ByOrderByAvaliacaoDesc();
+    List<Series> findTop5ByOrderByRatingDesc();
 
-    List<Series> findByGenero(Categoria categoria);
+    List<Series> findByGenre(Categoria categoria);
 
-    List<Series> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int totalTemporadas, double avaliacao);
-    @Query("select s from Serie s WHERE s.totalTemporadas <= :totalTemporadas AND s.avaliacao >= :avaliacao")
-    List<Series> seriesPorTemporadaEAValiacao(int totalTemporadas, double avaliacao);
-    @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE e.titulo ILIKE %:trechoEpisodio%")
-    List<Episode> episodiosPorTrecho(String trechoEpisodio);
+    List<Series> findBySeasonsLessThanEqualAndRatingGreaterThanEqual(int seasons, double rating);
+
+    @Query("select s from Series s WHERE s.seasons <= :seasons AND s.rating >= :rating")
+    List<Series> seriesBySeasonAndRating(int seasons, double rating);
+
+    @Query("SELECT e FROM Series s JOIN s.episode e WHERE e.title ILIKE %:episodeSnippet%")
+    List<Episode> episodeBySnippet(String episodeSnippet);
 
     @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s = :serie ORDER BY e.avaliacao DESC LIMIT 5")
     List<Episode> topEpisodiosPorSerie(Series series);
