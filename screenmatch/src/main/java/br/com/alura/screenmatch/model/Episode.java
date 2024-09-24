@@ -13,33 +13,33 @@ import java.time.format.DateTimeParseException;
 @Entity
 @Table(name = "episodes")
 public class Episode {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer season;
     private String title;
-    private Integer numeroEpisodio;
+    private Integer episodeIdx;
     private Double rating;
     private LocalDate releaseDate;
     @ManyToOne
     private Series series;
 
-    public Episode(){}
+    public Episode() {
+    }
 
-    public Episode(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
-        this.season = numeroTemporada;
-        this.title = dadosEpisodio.titulo();
-        this.numeroEpisodio = dadosEpisodio.numero();
+    public Episode(Integer season, EpisodeData episodeData) {
+        this.season = season;
+        this.title = episodeData.title();
+        this.episodeIdx = episodeData.episodeIdx();
 
         try {
-            this.rating = Double.valueOf(dadosEpisodio.avaliacao());
+            this.rating = Double.valueOf(episodeData.rating());
         } catch (NumberFormatException ex) {
             this.rating = 0.0;
         }
 
         try {
-            this.releaseDate = LocalDate.parse(dadosEpisodio.dataLancamento());
+            this.releaseDate = LocalDate.parse(episodeData.releaseDate());
         } catch (DateTimeParseException ex) {
             this.releaseDate = null;
         }
@@ -77,12 +77,12 @@ public class Episode {
         this.title = title;
     }
 
-    public Integer getNumeroEpisodio() {
-        return numeroEpisodio;
+    public Integer getEpisodeIdx() {
+        return episodeIdx;
     }
 
-    public void setNumeroEpisodio(Integer numeroEpisodio) {
-        this.numeroEpisodio = numeroEpisodio;
+    public void setEpisodeIdx(Integer episodeIdx) {
+        this.episodeIdx = episodeIdx;
     }
 
     public Double getRating() {
@@ -105,7 +105,7 @@ public class Episode {
     public String toString() {
         return "temporada=" + season +
                 ", titulo='" + title + '\'' +
-                ", numeroEpisodio=" + numeroEpisodio +
+                ", numeroEpisodio=" + episodeIdx +
                 ", avaliacao=" + rating +
                 ", dataLancamento=" + releaseDate;
     }
