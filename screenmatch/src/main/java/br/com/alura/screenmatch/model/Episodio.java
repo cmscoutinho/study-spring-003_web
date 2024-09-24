@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 @Entity
-@Table(name = "episodios")
+@Table(name = "episodes")
 public class Episodio {
 
     @Id
