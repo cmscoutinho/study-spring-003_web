@@ -121,12 +121,12 @@ public class Principal {
         if(serie.isPresent()) {
 
             var serieEncontrada = serie.get();
-            List<DadosTemporada> temporadas = new ArrayList<>();
+            List<SeasonData> temporadas = new ArrayList<>();
 
             for (int i = 1; i <= serieEncontrada.getSeasons(); i++) {
                 var json = consumo.obterDados(ENDERECO + serieEncontrada.getTitle().replace(" ", "+") + "&season=" + i + API_KEY);
-                DadosTemporada dadosTemporada = conversor.obterDados(json, DadosTemporada.class);
-                temporadas.add(dadosTemporada);
+                SeasonData seasonData = conversor.obterDados(json, SeasonData.class);
+                temporadas.add(seasonData);
             }
             temporadas.forEach(System.out::println);
 
