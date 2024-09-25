@@ -3,7 +3,7 @@ package br.com.alura.screenmatch.main;
 import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.repository.SeriesRepository;
 import br.com.alura.screenmatch.service.APIConsumer;
-import br.com.alura.screenmatch.service.ConverteDados;
+import br.com.alura.screenmatch.service.DataConverter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,7 +17,7 @@ public class Main {
 
     private Scanner leitura = new Scanner(System.in);
     private APIConsumer consumo = new APIConsumer();
-    private ConverteDados conversor = new ConverteDados();
+    private DataConverter conversor = new DataConverter();
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=6585022c";
     private List<SeriesData> dadosSeries = new ArrayList<>();
