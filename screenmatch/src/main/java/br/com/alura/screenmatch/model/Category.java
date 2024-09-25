@@ -21,14 +21,13 @@ public enum Category {
         }
         throw new IllegalArgumentException("No category was found for the given string!");
     }
-}
 
-    public static Categoria fromPortugues(String text) {
-        for (Categoria categoria : Categoria.values()) {
-            if (categoria.categoriaPortugues.equalsIgnoreCase(text)) {
-                return categoria;
+/*    public static Category fromPortuguese(String text) {
+        for (Category category : Category.values()) {
+            if (category.categoryPortuguese.equalsIgnoreCase(text)) {
+                return category;
             }
         }
         throw new IllegalArgumentException("Nenhuma categoria encontrada para a string fornecida: " + text);
-    }
+    }*/
 }
