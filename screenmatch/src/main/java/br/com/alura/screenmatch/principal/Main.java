@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Principal {
+public class Main {
 
     private Scanner leitura = new Scanner(System.in);
     private ConsumoApi consumo = new ConsumoApi();
@@ -25,7 +25,7 @@ public class Principal {
     private List<Series> series = new ArrayList<>();
     private Optional<Series> serieBusca;
 
-    public Principal(SeriesRepository repositorio) {
+    public Main(SeriesRepository repositorio) {
         this.repositorio = repositorio;
     }
 
