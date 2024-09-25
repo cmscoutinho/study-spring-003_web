@@ -30,14 +30,14 @@ public class Series {
 
     public Series() {}
 
-    public Series(DadosSerie dadosSerie){
-        this.title = dadosSerie.titulo();
-        this.seasons = dadosSerie.totalTemporadas();
-        this.rating = OptionalDouble.of(Double.valueOf(dadosSerie.avaliacao())).orElse(0);
-        this.genre = Categoria.fromString(dadosSerie.genero().split(",")[0].trim());
-        this.actors = dadosSerie.atores();
-        this.poster = dadosSerie.poster();
-        this.plot = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse()).trim();
+    public Series(SeriesData seriesData){
+        this.title = seriesData.titulo();
+        this.seasons = seriesData.totalTemporadas();
+        this.rating = OptionalDouble.of(Double.valueOf(seriesData.avaliacao())).orElse(0);
+        this.genre = Categoria.fromString(seriesData.genero().split(",")[0].trim());
+        this.actors = seriesData.atores();
+        this.poster = seriesData.poster();
+        this.plot = ConsultaChatGPT.obterTraducao(seriesData.sinopse()).trim();
     }
 
     public Long getId() {

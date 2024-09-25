@@ -19,7 +19,7 @@ public class Principal {
     private ConverteDados conversor = new ConverteDados();
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=6585022c";
-    private List<DadosSerie> dadosSeries = new ArrayList<>();
+    private List<SeriesData> dadosSeries = new ArrayList<>();
 
     private SeriesRepository repositorio;
     private List<Series> series = new ArrayList<>();
@@ -96,18 +96,18 @@ public class Principal {
     }
 
     private void buscarSerieWeb() {
-        DadosSerie dados = getDadosSerie();
+        SeriesData dados = getDadosSerie();
         Series series = new Series(dados);
         //dadosSeries.add(dados);
         repositorio.save(series);
         System.out.println(dados);
     }
 
-    private DadosSerie getDadosSerie() {
+    private SeriesData getDadosSerie() {
         System.out.println("Digite o nome da série para busca");
         var nomeSerie = leitura.nextLine();
         var json = consumo.obterDados(ENDERECO + nomeSerie.replace(" ", "+") + API_KEY);
-        DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
+        SeriesData dados = conversor.obterDados(json, SeriesData.class);
         return dados;
     }
 
