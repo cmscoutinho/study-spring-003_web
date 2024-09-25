@@ -3,7 +3,7 @@ package br.com.alura.screenmatch.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DataConverter implements IConverteDados {
+public class DataConverter implements IDataConverter {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
