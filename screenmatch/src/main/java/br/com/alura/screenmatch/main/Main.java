@@ -107,7 +107,7 @@ public class Main {
     private SeriesData getDadosSerie() {
         System.out.println("Digite o nome da série para busca");
         var nomeSerie = leitura.nextLine();
-        var json = consumo.obterDados(ENDERECO + nomeSerie.replace(" ", "+") + API_KEY);
+        var json = consumo.consume(ENDERECO + nomeSerie.replace(" ", "+") + API_KEY);
         SeriesData dados = conversor.obterDados(json, SeriesData.class);
         return dados;
     }
@@ -125,7 +125,7 @@ public class Main {
             List<SeasonData> temporadas = new ArrayList<>();
 
             for (int i = 1; i <= serieEncontrada.getSeasons(); i++) {
-                var json = consumo.obterDados(ENDERECO + serieEncontrada.getTitle().replace(" ", "+") + "&season=" + i + API_KEY);
+                var json = consumo.consume(ENDERECO + serieEncontrada.getTitle().replace(" ", "+") + "&season=" + i + API_KEY);
                 SeasonData seasonData = conversor.obterDados(json, SeasonData.class);
                 temporadas.add(seasonData);
             }
