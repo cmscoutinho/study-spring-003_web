@@ -96,12 +96,13 @@ public class Main {
         }
     }
 
-    private void buscarSerieWeb() {
-        SeriesData dados = getDadosSerie();
-        Series series = new Series(dados);
-        //dadosSeries.add(dados);
+    private void searchByTitle() {
+        SeriesData seriesData = getSeasonData();
+        Series series = new Series(seriesData);
+//        searchedSeries.add(seriesData);
         repository.save(series);
-        System.out.println(dados);
+        System.out.println("Output:");
+        System.out.println(seriesData);
     }
 
     private SeriesData getDadosSerie() {
