@@ -113,34 +113,40 @@ public class Main {
         return dados;
     }
 
-    private void buscarEpisodioPorSerie(){
-        listarSeriesBuscadas();
-        System.out.println("Escolha uma série pelo nome");
-        var nomeSerie = scanner.nextLine();
+    private void searchBySeason() {
+        listSearchedTitles();
+        var seriesName = readTitle();
 
-        Optional<Series> serie = repository.findByTitleContainingIgnoreCase(nomeSerie);
+//        Old method using streams
+//        Optional<Series> selectedSeries = series.stream()
+//                .filter(s -> s.getTitle().toLowerCase().contains(seriesName.toLowerCase()))
+//                .findFirst();
 
-        if(serie.isPresent()) {
+//        New method using the JPA repository
+        Optional<Series> selectedSeries = repository.findByTitleContainsIgnoreCase(seriesName);
 
-            var serieEncontrada = serie.get();
-            List<SeasonData> temporadas = new ArrayList<>();
+        if (selectedSeries.isPresent()) {
+            //SeriesData seriesData = getSeasonData();
+            Series foundSeries = selectedSeries.get();
+            List<SeasonData> seasons = new ArrayList<>();
 
-            for (int i = 1; i <= serieEncontrada.getSeasons(); i++) {
-                var json = consumer.consume(URL + serieEncontrada.getTitle().replace(" ", "+") + "&season=" + i + API_KEY);
-                SeasonData seasonData = converter.obterDados(json, SeasonData.class);
-                temporadas.add(seasonData);
+            for (int i = 1; i <= foundSeries.getSeasons(); i++) {
+                String json = consumer.consume(foundSeries.getTitle() + "&season=" + i);
+                SeasonData seasonData = converter.getData(json, SeasonData.class);
+                seasons.add(seasonData);
             }
-            temporadas.forEach(System.out::println);
 
-            List<Episode> episodes = temporadas.stream()
-                    .flatMap(d -> d.episodios().stream()
-                            .map(e -> new Episode(d.numero(), e)))
+            seasons.forEach(System.out::println);
+
+            List<Episode> episodes = seasons.stream()
+                    .flatMap(d -> d.episodeData().stream()
+                            .map(e -> new Episode(d.seasonIdx(), e)))
                     .collect(Collectors.toList());
 
-            serieEncontrada.setEpisodes(episodes);
-            repository.save(serieEncontrada);
+            foundSeries.setEpisodes(episodes);
+            repository.save(foundSeries);
         } else {
-            System.out.println("Série não encontrada!");
+            System.out.println("Series not found!");
         }
     }
 
