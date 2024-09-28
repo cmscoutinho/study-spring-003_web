@@ -37,7 +37,7 @@ public class Series {
         this.genre = Categoria.fromString(seriesData.genero().split(",")[0].trim());
         this.actors = seriesData.atores();
         this.poster = seriesData.poster();
-        this.plot = ChatGPTQuery.obterTraducao(seriesData.sinopse()).trim();
+        this.plot = ChatGPTQuery.getTranslation(seriesData.sinopse()).trim();
     }
 
     public Long getId() {

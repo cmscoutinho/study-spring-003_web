@@ -4,7 +4,7 @@ import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
 
 public class ChatGPTQuery {
-    public static String obterTraducao(String texto) {
+    public static String getTranslation(String texto) {
         OpenAiService service = new OpenAiService(System.getenv("OPENAI_APIKEY"));
 
 
