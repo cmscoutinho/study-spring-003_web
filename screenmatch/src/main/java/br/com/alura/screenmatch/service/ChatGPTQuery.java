@@ -8,7 +8,7 @@ public class ChatGPTQuery {
         OpenAiService service = new OpenAiService(System.getenv("OPENAI_APIKEY"));
 
 
-        CompletionRequest requisicao = CompletionRequest.builder()
+        CompletionRequest query = CompletionRequest.builder()
                 .model("text-davinci-003")
                 .prompt("traduza para o português o texto: " + texto)
                 .maxTokens(1000)
@@ -16,7 +16,7 @@ public class ChatGPTQuery {
                 .build();
 
 
-        var resposta = service.createCompletion(requisicao);
+        var resposta = service.createCompletion(query);
         return resposta.getChoices().get(0).getText();
     }
 }
