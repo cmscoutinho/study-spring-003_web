@@ -31,13 +31,13 @@ public class Series {
     public Series() {}
 
     public Series(SeriesData seriesData){
-        this.title = seriesData.titulo();
-        this.seasons = seriesData.totalTemporadas();
-        this.rating = OptionalDouble.of(Double.valueOf(seriesData.avaliacao())).orElse(0);
-        this.genre = Categoria.fromString(seriesData.genero().split(",")[0].trim());
-        this.actors = seriesData.atores();
+        this.title = seriesData.title();
+        this.seasons = seriesData.seasons();
+        this.rating = OptionalDouble.of(Double.valueOf(seriesData.rating())).orElse(0);
+        this.genre = Category.fromString(seriesData.genre().split(",")[0].trim());
+        this.actors = seriesData.actors();
         this.poster = seriesData.poster();
-        this.plot = ChatGPTQuery.getTranslation(seriesData.sinopse()).trim();
+        this.plot = ChatGPTQuery.getTranslation(seriesData.plot()).trim();
     }
 
     public Long getId() {
@@ -81,11 +81,11 @@ public class Series {
         this.rating = rating;
     }
 
-    public Categoria getGenre() {
+    public Category getGenre() {
         return genre;
     }
 
-    public void setGenre(Categoria genre) {
+    public void setGenre(Category genre) {
         this.genre = genre;
     }
 
