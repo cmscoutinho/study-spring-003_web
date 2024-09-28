@@ -16,7 +16,7 @@ public class ChatGPTQuery {
                 .build();
 
 
-        var resposta = service.createCompletion(query);
-        return resposta.getChoices().get(0).getText();
+        var reply = service.createCompletion(query);
+        return reply.getChoices().get(0).getText();
     }
 }
