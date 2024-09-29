@@ -61,7 +61,7 @@ public class Main {
                     searchEpisodeBySeason();
                     break;
                 case 3:
-                    listarSeriesBuscadas();
+                    listSearchedTitles();
                     break;
                 case 4:
                     buscarSeriePorTitulo();
@@ -150,7 +150,7 @@ public class Main {
         }
     }
 
-    private void listarSeriesBuscadas(){
+    private void listSearchedTitles(){
         series = repository.findAll();
         series.stream()
                 .sorted(Comparator.comparing(Series::getGenre))
