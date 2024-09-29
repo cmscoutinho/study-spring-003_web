@@ -103,7 +103,7 @@ public class Main {
     }
 
     private void searchByTitleWeb() {
-        SeriesData seriesData = getSeasonData();
+        SeriesData seriesData = getSeriesData();
         Series series = new Series(seriesData);
 //        searchedSeries.add(seriesData);
         repository.save(series);
@@ -111,12 +111,11 @@ public class Main {
         System.out.println(seriesData);
     }
 
-    private SeriesData getDadosSerie() {
-        System.out.println("Digite o nome da série para busca");
-        var nomeSerie = scanner.nextLine();
-        var json = consumer.consume(URL + nomeSerie.replace(" ", "+") + API_KEY);
-        SeriesData dados = converter.getData(json, SeriesData.class);
-        return dados;
+    private SeriesData getSeriesData() {
+        String title = readTitle();
+        String json = consumer.consume(title);
+        SeriesData data = converter.getData(json, SeriesData.class);
+        return data;
     }
 
     private void searchEpisodeBySeason() {
