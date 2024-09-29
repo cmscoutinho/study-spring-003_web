@@ -96,6 +96,12 @@ public class Main {
         }
     }
 
+    private String readTitle() {
+        System.out.print("Type in the Show's title: ");
+        String title = scanner.nextLine();
+        return title;
+    }
+
     private void searchByTitleWeb() {
         SeriesData seriesData = getSeasonData();
         Series series = new Series(seriesData);
