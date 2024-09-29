@@ -55,7 +55,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    buscarSerieWeb();
+                    searchByTitle();
                     break;
                 case 2:
                     buscarEpisodioPorSerie();
@@ -88,10 +88,10 @@ public class Main {
                     buscarEpisodiosDepoisDeUmaData();
                     break;
                 case 0:
-                    System.out.println("Saindo...");
+                    System.out.println("Exiting...");
                     break;
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("Invalid option!");
             }
         }
     }
