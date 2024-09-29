@@ -55,10 +55,10 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    searchByTitle();
+                    searchByTitleWeb();
                     break;
                 case 2:
-                    buscarEpisodioPorSerie();
+                    searchEpisodeBySeason();
                     break;
                 case 3:
                     listarSeriesBuscadas();
@@ -96,7 +96,7 @@ public class Main {
         }
     }
 
-    private void searchByTitle() {
+    private void searchByTitleWeb() {
         SeriesData seriesData = getSeasonData();
         Series series = new Series(seriesData);
 //        searchedSeries.add(seriesData);
@@ -113,7 +113,7 @@ public class Main {
         return dados;
     }
 
-    private void searchBySeason() {
+    private void searchEpisodeBySeason() {
         listSearchedTitles();
         var seriesName = readTitle();
 
