@@ -30,30 +30,30 @@ public class Main {
         this.repository = repository;
     }
 
-    public void exibeMenu() {
-        var opcao = -1;
-        while(opcao != 0) {
+    public void showMenu() {
+        var option = -1;
+        while(option != 0) {
             var menu = """
-                    1 - Buscar séries
-                    2 - Buscar episódios
-                    3 - Listar séries buscadas
-                    4 - Buscar série por título
-                    5 - Buscar séries por ator
-                    6 - Top 5 Séries
-                    7 - Buscar séries por categoria
-                    8 - Filtrar séries
-                    9 - Buscar episódios por trecho
-                    10 - Top 5 episódios por série
-                    11 - Buscar episódios a partir de uma data 
+                    1 - Search series
+                    2 - Search episodes
+                    3 - List searched series
+                    4 - Search series by title
+                    5 - Search series by actor
+                    6 - Top 5 Series
+                    7 - Search searies by category
+                    8 - Filter series
+                    9 - Search episodes by snippet
+                    10 - Top 5 episodes per series
+                    11 - Search episodes from a given year 
                                     
-                    0 - Sair                                 
+                    0 - Exit                                 
                     """;
 
             System.out.println(menu);
-            opcao = scanner.nextInt();
+            option = scanner.nextInt();
             scanner.nextLine();
 
-            switch (opcao) {
+            switch (option) {
                 case 1:
                     buscarSerieWeb();
                     break;
