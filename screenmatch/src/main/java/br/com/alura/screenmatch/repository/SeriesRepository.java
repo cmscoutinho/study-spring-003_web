@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.repository;
 
-import br.com.alura.screenmatch.model.Categoria;
+import br.com.alura.screenmatch.model.Category;
 import br.com.alura.screenmatch.model.Episode;
 import br.com.alura.screenmatch.model.Series;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +16,7 @@ public interface SeriesRepository extends JpaRepository<Series, Long> {
 
     List<Series> findTop5ByOrderByRatingDesc();
 
-    List<Series> findByGenre(Categoria categoria);
+    List<Series> findByGenre(Category category);
 
     List<Series> findBySeasonsLessThanEqualAndRatingGreaterThanEqual(int seasons, double rating);
 
