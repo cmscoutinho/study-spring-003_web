@@ -109,7 +109,7 @@ public class Main {
         System.out.println("Digite o nome da série para busca");
         var nomeSerie = scanner.nextLine();
         var json = consumer.consume(URL + nomeSerie.replace(" ", "+") + API_KEY);
-        SeriesData dados = converter.obterDados(json, SeriesData.class);
+        SeriesData dados = converter.getData(json, SeriesData.class);
         return dados;
     }
 
