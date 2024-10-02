@@ -165,7 +165,7 @@ public class Main {
     private void buscarSeriePorTitulo() {
         System.out.println("Escolha um série pelo nome: ");
         var nomeSerie = scanner.nextLine();
-        seriesSearch = repository.findByTitleContainingIgnoreCase(nomeSerie);
+        seriesSearch = repository.findByTitleContainsIgnoreCase(nomeSerie);
 
         if (seriesSearch.isPresent()) {
             System.out.println("Dados da série: " + seriesSearch.get());
