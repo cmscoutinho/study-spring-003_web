@@ -73,7 +73,7 @@ public class Main {
                     findTop5Series();
                     break;
                 case 7:
-                    buscarSeriesPorCategoria();
+                    findSeriesByCategory();
                     break;
                 case 8:
                     filtrarSeriesPorTemporadaEAvaliacao();
@@ -193,13 +193,12 @@ public class Main {
                 System.out.println(s.getTitle() + " | Rating: " + s.getRating()));
     }
 
-    private void buscarSeriesPorCategoria() {
-        System.out.println("Deseja buscar séries de que categoria/gênero? ");
-        var nomeGenero = scanner.nextLine();
-        Categoria categoria = Categoria.fromPortugues(nomeGenero);
-        List<Series> seriesPorCategoria = repository.findByGenre(categoria);
-        System.out.println("Séries da categoria " + nomeGenero);
-        seriesPorCategoria.forEach(System.out::println);
+    private void findSeriesByCategory() {
+        System.out.println("Which cateogry/genre?");
+        var category = scanner.nextLine();
+        List<Series> seriesByCategory = repository.findByGenre(Category.fromString(category));
+        System.out.println("Series in category " + category);
+        seriesByCategory.forEach(System.out::println);
     }
 
     private void filtrarSeriesPorTemporadaEAvaliacao(){
