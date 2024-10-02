@@ -64,7 +64,7 @@ public class Main {
                     listSearchedTitles();
                     break;
                 case 4:
-                    buscarSeriePorTitulo();
+                    findSeriesByTitle();
                     break;
                 case 5:
                     buscarSeriesPorAtor();
@@ -162,16 +162,16 @@ public class Main {
                 .forEach(System.out::println);
     }
 
-    private void buscarSeriePorTitulo() {
-        System.out.println("Escolha um série pelo nome: ");
-        var nomeSerie = scanner.nextLine();
-        seriesSearch = repository.findByTitleContainsIgnoreCase(nomeSerie);
+    private void findSeriesByTitle() {
+        System.out.println("Choose a series by its name: ");
+        var seriesName = scanner.nextLine();
+        seriesSearch = repository.findByTitleContainsIgnoreCase(seriesName);
 
         if (seriesSearch.isPresent()) {
-            System.out.println("Dados da série: " + seriesSearch.get());
+            System.out.println("Series information: " + seriesSearch.get());
 
         } else {
-            System.out.println("Série não encontrada!");
+            System.out.println("Series not found!");
         }
 
     }
@@ -226,7 +226,7 @@ public class Main {
     }
 
     private void topEpisodiosPorSerie(){
-        buscarSeriePorTitulo();
+        findSeriesByTitle();
         if(seriesSearch.isPresent()){
             Series series = seriesSearch.get();
             List<Episode> topEpisodes = repository.topEpisodesBySeries(series);
@@ -237,7 +237,7 @@ public class Main {
         }
     }
     private void buscarEpisodiosDepoisDeUmaData(){
-        buscarSeriePorTitulo();
+        findSeriesByTitle();
         if(seriesSearch.isPresent()){
             Series series = seriesSearch.get();
             System.out.println("Digite o ano limite de lançamento");
