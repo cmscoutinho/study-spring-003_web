@@ -1,16 +1,14 @@
 package br.com.alura.screenmatch.dto;
 
-import br.com.alura.screenmatch.model.Categoria;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import br.com.alura.screenmatch.model.Category;
 
 public record SeriesDTO(
         Long id,
-        String titulo,
-        Integer totalTemporadas,
-        Double avaliacao,
-        Categoria genero,
-        String atores,
+        String title,
+        Integer seasons,
+        Double rating,
+        Category genre,
+        String actors,
         String poster,
-        String sinopse) {
+        String plot) {
 }
