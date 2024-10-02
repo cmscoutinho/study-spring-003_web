@@ -67,7 +67,7 @@ public class Main {
                     findSeriesByTitle();
                     break;
                 case 5:
-                    buscarSeriesPorAtor();
+                    findSeriesByActor();
                     break;
                 case 6:
                     buscarTop5Series();
@@ -176,15 +176,15 @@ public class Main {
 
     }
 
-    private void buscarSeriesPorAtor() {
-        System.out.println("Qual o nome para busca?");
-        var nomeAtor = scanner.nextLine();
-        System.out.println("Avaliações a partir de que valor? ");
-        var avaliacao = scanner.nextDouble();
-        List<Series> seriesEncontradas = repository.findByActorsContainingIgnoreCaseAndRatingGreaterThanEqual(nomeAtor, avaliacao);
-        System.out.println("Séries em que " + nomeAtor + " trabalhou: ");
-        seriesEncontradas.forEach(s ->
-                System.out.println(s.getTitle() + " avaliação: " + s.getRating()));
+    private void findSeriesByActor() {
+        System.out.print("Type in the actor's name: ");
+        var actorName = scanner.nextLine();
+        System.out.print("Rating starting from: ");
+        var rating = scanner.nextDouble();
+        List<Series> seriesFound = repository.findByActorsContainingIgnoreCaseAndRatingGreaterThanEqual(actorName, rating);
+        System.out.println("Shows where " + actorName + " made part:");
+        seriesFound.forEach(s ->
+                System.out.println(s.getTitle() + " | Rating: " + s.getRating()));
     }
 
     private void buscarTop5Series() {
