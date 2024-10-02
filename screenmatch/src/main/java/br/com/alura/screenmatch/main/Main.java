@@ -76,7 +76,7 @@ public class Main {
                     findSeriesByCategory();
                     break;
                 case 8:
-                    filtrarSeriesPorTemporadaEAvaliacao();
+                    findBySeasonsAndRating();
                     break;
                 case 9:
                     buscarEpisodioPorTrecho();
@@ -201,17 +201,19 @@ public class Main {
         seriesByCategory.forEach(System.out::println);
     }
 
-    private void filtrarSeriesPorTemporadaEAvaliacao(){
-        System.out.println("Filtrar séries até quantas temporadas? ");
-        var totalTemporadas = scanner.nextInt();
+    private void findBySeasonsAndRating() {
+        System.out.print("Up to how many seasons?: ");
+        var numSeasons = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Com avaliação a partir de que valor? ");
-        var avaliacao = scanner.nextDouble();
+
+        System.out.print("Minimum rating?: ");
+        var minRating = scanner.nextDouble();
         scanner.nextLine();
-        List<Series> filtroSeries = repository.seriesBySeasonAndRating(totalTemporadas, avaliacao);
-        System.out.println("*** Séries filtradas ***");
-        filtroSeries.forEach(s ->
-                System.out.println(s.getTitle() + "  - avaliação: " + s.getRating()));
+
+        // List<Series> seriesBySeasonsAndRating = repository.findBySeasonsLessThanEqualAndRatingGreaterThanEqual(numSeasons, minRating);
+
+        List<Series> seriesBySeasonsAndRating = repository.seriesBySeasonsAndRating(numSeasons, minRating);
+        seriesBySeasonsAndRating.forEach(System.out::println);
     }
 
     private void buscarEpisodioPorTrecho(){
