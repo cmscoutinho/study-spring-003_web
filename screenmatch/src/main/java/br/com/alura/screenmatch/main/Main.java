@@ -70,7 +70,7 @@ public class Main {
                     findSeriesByActor();
                     break;
                 case 6:
-                    buscarTop5Series();
+                    findTop5Series();
                     break;
                 case 7:
                     buscarSeriesPorCategoria();
@@ -187,10 +187,10 @@ public class Main {
                 System.out.println(s.getTitle() + " | Rating: " + s.getRating()));
     }
 
-    private void buscarTop5Series() {
-        List<Series> seriesTop = repository.findTop5ByOrderByRatingDesc();
-        seriesTop.forEach(s ->
-                System.out.println(s.getTitle() + " avaliação: " + s.getRating()));
+    private void findTop5Series() {
+        List<Series> topSeries = repository.findTop5ByOrderByRatingDesc();
+        topSeries.forEach(s ->
+                System.out.println(s.getTitle() + " | Rating: " + s.getRating()));
     }
 
     private void buscarSeriesPorCategoria() {
