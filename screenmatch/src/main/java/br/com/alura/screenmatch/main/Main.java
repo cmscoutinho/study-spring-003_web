@@ -79,7 +79,7 @@ public class Main {
                     findBySeasonsAndRating();
                     break;
                 case 9:
-                    buscarEpisodioPorTrecho();
+                    findEpisodeBySnippet();
                     break;
                 case 10:
                     topEpisodiosPorSerie();
@@ -216,14 +216,15 @@ public class Main {
         seriesBySeasonsAndRating.forEach(System.out::println);
     }
 
-    private void buscarEpisodioPorTrecho(){
-        System.out.println("Qual o nome do episódio para busca?");
-        var trechoEpisodio = scanner.nextLine();
-        List<Episode> episodiosEncontrados = repository.episodeBySnippet(trechoEpisodio);
-        episodiosEncontrados.forEach(e ->
-                System.out.printf("Série: %s Temporada %s - Episódio %s - %s\n",
-                        e.getSeries().getTitle(), e.getSeason(),
-                        e.getNumeroEpisodio(), e.getTitle()));
+    private void findEpisodeBySnippet() {
+        System.out.print("Episode's name: ");
+        var snippet = scanner.nextLine();
+        List<Episode> episodesFound = repository.episodesBySnippet(snippet);
+        //episodesFound.forEach(System.out::println);
+        episodesFound.forEach(e ->
+                System.out.printf("Series: %s Season %s - Episode %s - %s\n",
+                        e.getSeries().getTitle(), e.getSeason(), e.getEpisodeIdx(), e.getTitle()));
+
     }
 
     private void topEpisodiosPorSerie(){
