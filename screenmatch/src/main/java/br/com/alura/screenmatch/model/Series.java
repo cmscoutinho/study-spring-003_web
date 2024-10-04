@@ -124,14 +124,14 @@ public class Series {
 
     @Override
     public String toString() {
-        return
-                "genero=" + genre +
-                        ", titulo='" + title + '\'' +
-                        ", totalTemporadas=" + seasons +
-                        ", avaliacao=" + rating +
-                        ", atores='" + actors + '\'' +
-                        ", poster='" + poster + '\'' +
-                        ", sinopse='" + plot + '\'' +
-                        ", episodios='" + episodes + '\'';
+        return "genre=" + genre +
+                ", title='" + title + '\'' +
+                ", seasons=" + seasons +
+                ", actors='" + actors + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", rating=" + rating +
+                ", poster='" + poster + '\'' +
+                ", plot='" + plot + '\'' +
+                ", episodes='" + episodes + '\'';
     }
 }
