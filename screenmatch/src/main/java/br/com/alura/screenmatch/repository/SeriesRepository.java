@@ -21,7 +21,7 @@ public interface SeriesRepository extends JpaRepository<Series, Long> {
     List<Series> findBySeasonsLessThanEqualAndRatingGreaterThanEqual(int seasons, double rating);
 
     @Query("select s from Series s WHERE s.seasons <= :seasons AND s.rating >= :rating")
-    List<Series> seriesBySeasonAndRating(int seasons, double rating);
+    List<Series> seriesBySeasonsAndRating(int seasons, double rating);
 
     @Query("SELECT e FROM Series s JOIN s.episodes e WHERE e.title ILIKE %:episodeSnippet%")
     List<Episode> episodesBySnippet(String episodeSnippet);
