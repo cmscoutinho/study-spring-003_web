@@ -85,7 +85,7 @@ public class Main {
                     topEpisodesPerSeries();
                     break;
                 case 11:
-                    buscarEpisodiosDepoisDeUmaData();
+                    episodesStartingDate();
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -237,16 +237,17 @@ public class Main {
                             e.getSeries().getTitle(), e.getSeason(), e.getEpisodeIdx(), e.getTitle(), e.getRating()));
         }
     }
-    private void buscarEpisodiosDepoisDeUmaData(){
+    private void episodesStartingDate() {
         findSeriesByTitle();
-        if(seriesSearch.isPresent()){
-            Series series = seriesSearch.get();
-            System.out.println("Digite o ano limite de lançamento");
-            var anoLancamento = scanner.nextInt();
+        if(seriesSearch.isPresent()) {
+            System.out.print("Starting year: ");
+            var year = scanner.nextInt();
             scanner.nextLine();
 
-            List<Episode> episodiosAno = repository.episodesBySeriesAndYear(series, anoLancamento);
-            episodiosAno.forEach(System.out::println);
+            Series series = seriesSearch.get();
+            List<Episode> episodesFromDate = repository.episodesBySeriesAndYear(series, year);
+
+            episodesFromDate.forEach(System.out::println);
         }
     }
 }
