@@ -98,6 +98,14 @@ public class Series {
         this.actors = actors;
     }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     public String getPoster() {
         return poster;
     }
