@@ -82,7 +82,7 @@ public class Main {
                     findEpisodeBySnippet();
                     break;
                 case 10:
-                    topEpisodiosPorSerie();
+                    topEpisodesPerSeries();
                     break;
                 case 11:
                     buscarEpisodiosDepoisDeUmaData();
@@ -227,15 +227,14 @@ public class Main {
 
     }
 
-    private void topEpisodiosPorSerie(){
+    private void topEpisodesPerSeries() {
         findSeriesByTitle();
-        if(seriesSearch.isPresent()){
+        if (seriesSearch.isPresent()) {
             Series series = seriesSearch.get();
-            List<Episode> topEpisodes = repository.topEpisodesBySeries(series);
+            List<Episode> topEpisodes = repository.topEpisodesPerSeries(series);
             topEpisodes.forEach(e ->
-                    System.out.printf("Série: %s Temporada %s - Episódio %s - %s Avaliação %s\n",
-                            e.getSeries().getTitle(), e.getSeason(),
-                            e.getNumeroEpisodio(), e.getTitle(), e.getRating()));
+                    System.out.printf("Série: %s Temporada %s - Episódio %s - %s - Nota: %s\n",
+                            e.getSeries().getTitle(), e.getSeason(), e.getEpisodeIdx(), e.getTitle(), e.getRating()));
         }
     }
     private void buscarEpisodiosDepoisDeUmaData(){
