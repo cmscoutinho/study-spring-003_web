@@ -10,7 +10,7 @@ public class ChatGPTQuery {
 
         CompletionRequest query = CompletionRequest.builder()
                 .model("text-davinci-003")
-                .prompt("traduza para o português o texto: " + texto)
+                .prompt("translate this text to portuguese: " + texto)
                 .maxTokens(1000)
                 .temperature(0.7)
                 .build();
