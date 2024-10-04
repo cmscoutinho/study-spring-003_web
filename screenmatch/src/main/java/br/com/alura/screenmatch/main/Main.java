@@ -233,7 +233,7 @@ public class Main {
             Series series = seriesSearch.get();
             List<Episode> topEpisodes = repository.topEpisodesPerSeries(series);
             topEpisodes.forEach(e ->
-                    System.out.printf("Série: %s Temporada %s - Episódio %s - %s - Nota: %s\n",
+                    System.out.printf("Series: %s Season %s - Episode %s - %s - Rating: %s\n",
                             e.getSeries().getTitle(), e.getSeason(), e.getEpisodeIdx(), e.getTitle(), e.getRating()));
         }
     }
