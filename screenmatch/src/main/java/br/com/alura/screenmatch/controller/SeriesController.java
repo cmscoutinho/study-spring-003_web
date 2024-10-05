@@ -22,4 +22,9 @@ public class SeriesController {
                 .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/inicio")
+    public String getHome() {
+        return "Bem-vindo(a) ao Screenmatch!";
+    }
 }
