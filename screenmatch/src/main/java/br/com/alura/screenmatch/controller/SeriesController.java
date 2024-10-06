@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 @RestController
 public class SeriesController {
 
-    @Autowired
-    SeriesRepository repository;
-
     @GetMapping("/series")
     public List<SeriesDTO> getSeries() {
         return repository.findAll()
