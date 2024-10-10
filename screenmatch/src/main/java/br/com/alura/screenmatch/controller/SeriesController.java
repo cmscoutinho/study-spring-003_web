@@ -5,18 +5,20 @@ import br.com.alura.screenmatch.repository.SeriesRepository;
 import br.com.alura.screenmatch.service.SeriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/series")
 public class SeriesController {
 
     @Autowired
     private SeriesService service;
 
-    @GetMapping("/series")
+    @GetMapping
     public List<SeriesDTO> getSeries() {
         return service.getAllSeries();
     }
@@ -26,7 +28,7 @@ public class SeriesController {
         return "Bem-vindo(a) ao Screenmatch!";
     }
 
-    @GetMapping("/series/top5")
+    @GetMapping("/top5")
     public List<SeriesDTO> getTop5Series() {
         return service.getTop5Series();
     }
