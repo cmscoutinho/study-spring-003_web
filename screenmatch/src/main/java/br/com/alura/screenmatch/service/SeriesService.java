@@ -25,10 +25,7 @@ public class SeriesService {
     }
 
     public List<SeriesDTO> getTop5Series() {
-        return repository.findTop5ByOrderByRatingDesc()
-                .stream()
-                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
-                .collect(Collectors.toList());
+        return convertData(repository.findTop5ByOrderByRatingDesc());
     }
 
     private List<SeriesDTO> convertData(List<Series> series) {
