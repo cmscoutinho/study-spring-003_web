@@ -25,4 +25,9 @@ public class SeriesController {
     public String getHome() {
         return "Bem-vindo(a) ao Screenmatch!";
     }
+
+    @GetMapping("/series/top5")
+    public List<SeriesDTO> getTop5Series() {
+        return service.getTop5Series();
+    }
 }
