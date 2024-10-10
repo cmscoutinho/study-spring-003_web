@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 public class Main {
 
-
     private Scanner scanner = new Scanner(System.in);
     private APIConsumer consumer = new APIConsumer();
     private DataConverter converter = new DataConverter();
