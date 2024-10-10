@@ -23,4 +23,10 @@ public class SeriesService {
                 .collect(Collectors.toList());
     }
 
+    public List<SeriesDTO> getTop5Series() {
+        return repository.findTop5ByOrderByRatingDesc()
+                .stream()
+                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
+                .collect(Collectors.toList());
+    }
 }
