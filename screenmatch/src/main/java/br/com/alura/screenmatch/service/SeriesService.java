@@ -18,10 +18,7 @@ public class SeriesService {
     private SeriesRepository repository;
 
     public List<SeriesDTO> getAllSeries() {
-        return repository.findAll()
-                .stream()
-                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
-                .collect(Collectors.toList());
+        return convertData(repository.findAll());
     }
 
     public List<SeriesDTO> getTop5Series() {
