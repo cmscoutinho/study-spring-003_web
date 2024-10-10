@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.service;
 
 import br.com.alura.screenmatch.dto.SeriesDTO;
+import br.com.alura.screenmatch.model.Series;
 import br.com.alura.screenmatch.model.SeriesData;
 import br.com.alura.screenmatch.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class SeriesService {
     public List<SeriesDTO> getTop5Series() {
         return repository.findTop5ByOrderByRatingDesc()
                 .stream()
+                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
+                .collect(Collectors.toList());
+    }
+
+    private List<SeriesDTO> convertData(List<Series> series) {
+        return series.stream()
                 .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
                 .collect(Collectors.toList());
     }
