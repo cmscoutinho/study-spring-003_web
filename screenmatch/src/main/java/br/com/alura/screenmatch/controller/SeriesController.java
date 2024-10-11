@@ -30,4 +30,9 @@ public class SeriesController {
     public List<SeriesDTO> getTop5Series() {
         return service.getTop5Series();
     }
+
+    @GetMapping("/releases")
+    public List<SeriesDTO> getReleases() {
+        return service.getReleases();
+    }
 }
