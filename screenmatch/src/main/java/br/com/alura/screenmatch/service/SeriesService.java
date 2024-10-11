@@ -29,4 +29,8 @@ public class SeriesService {
                 .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
                 .collect(Collectors.toList());
     }
+
+    public List<SeriesDTO> getReleases() {
+        return convertData(repository.findTop5ByOrderByEpisodesReleaseDateDesc());
+    }
 }
