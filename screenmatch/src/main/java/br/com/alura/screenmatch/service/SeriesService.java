@@ -16,18 +16,18 @@ public class SeriesService {
     @Autowired
     private SeriesRepository repository;
 
+private List<SeriesDTO> convertData(List<Series> series) {
+        return series.stream()
+                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
+                .collect(Collectors.toList());
+    }
+    
     public List<SeriesDTO> getAllSeries() {
         return convertData(repository.findAll());
     }
 
     public List<SeriesDTO> getTop5Series() {
         return convertData(repository.findTop5ByOrderByRatingDesc());
-    }
-
-    private List<SeriesDTO> convertData(List<Series> series) {
-        return series.stream()
-                .map(s -> new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot()))
-                .collect(Collectors.toList());
     }
 
     public List<SeriesDTO> getReleases() {
