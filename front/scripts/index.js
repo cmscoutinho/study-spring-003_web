@@ -3,7 +3,7 @@ import getDados from "./getDados.js";
 // Mapeia os elementos DOM que você deseja atualizar
 const elementos = {
     top5: document.querySelector('[data-name="top5"]'),
-    lancamentos: document.querySelector('[data-name="lancamentos"]'),
+    releases: document.querySelector('[data-name="lancamentos"]'),
     series: document.querySelector('[data-name="series"]')
 };
 
