@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,6 +36,11 @@ public class SeriesService {
     }
 
     public SeriesDTO getById(Long id) {
-
+        Optional<Series> series = repository.findById(id);
+        if (series.isPresent()) {
+            Series s = series.get();
+            return new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot())
+        }
+        return null;
     }
 }
