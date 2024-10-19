@@ -35,4 +35,9 @@ public class SeriesController {
     public List<SeriesDTO> getReleases() {
         return service.getReleases();
     }
+
+    @GetMapping("/{id}")
+    public SeriesDTO getById() {
+
+    }
 }
