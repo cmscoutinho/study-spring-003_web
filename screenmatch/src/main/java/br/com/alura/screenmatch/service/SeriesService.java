@@ -33,4 +33,8 @@ public class SeriesService {
     public List<SeriesDTO> getReleases() {
         return convertData(repository.findTop5ByOrderByEpisodesReleaseDateDesc());
     }
+
+    public SeriesDTO getById(Long id) {
+
+    }
 }
