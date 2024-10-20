@@ -38,7 +38,7 @@ public class SeriesService {
         Optional<Series> series = repository.findById(id);
         if (series.isPresent()) {
             Series s = series.get();
-            return new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot())
+            return new SeriesDTO(s.getId(), s.getTitle(), s.getSeasons(), s.getRating(), s.getGenre(), s.getActors(), s.getPoster(), s.getPlot());
         }
         return null;
     }
