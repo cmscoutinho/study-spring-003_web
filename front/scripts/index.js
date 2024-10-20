@@ -2,15 +2,9 @@ import getDados from './getDados.js';
 
 // Mapeia os elementos DOM que você deseja atualizar
 const elementos = {
-<<<<<<< HEAD
   top5: document.querySelector('[data-name="top5"]'),
-  lancamentos: document.querySelector('[data-name="lancamentos"]'),
+  releases: document.querySelector('[data-name="lancamentos"]'),
   series: document.querySelector('[data-name="series"]'),
-=======
-    top5: document.querySelector('[data-name="top5"]'),
-    releases: document.querySelector('[data-name="lancamentos"]'),
-    series: document.querySelector('[data-name="series"]')
->>>>>>> c3068286baf54524351f45d3dae60d2dcf22e168
 };
 
 // Função para criar a lista de filmes
@@ -86,7 +80,7 @@ function geraSeries() {
   Promise.all(urls.map((url) => getDados(url)))
     .then((data) => {
       criarListaFilmes(elementos.top5, data[0]);
-      criarListaFilmes(elementos.lancamentos, data[1]);
+      criarListaFilmes(elementos.releases, data[1]);
       criarListaFilmes(elementos.series, data[2].slice(0, 5));
     })
     .catch((error) => {
