@@ -50,7 +50,7 @@ function carregarEpisodios() {
         ul.className = 'episodios-lista';
 
         const episodiosTemporadaAtual = data.filter(
-          (series) => series.season === season
+          (series) => series.season === temporada
         );
 
         const listaHTML = episodiosTemporadaAtual
