@@ -46,6 +46,6 @@ public class SeriesController {
 
     @GetMapping("/{ìd}/seasons/all")
     public List<EpisodeDTO> getAllSeasons(@PathVariable Long id) {
-
+        return service.getAllSeasons(id);
     }
 }
