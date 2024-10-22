@@ -8,7 +8,7 @@ const fichaDescricao = document.getElementById('ficha-descricao');
 
 // Função para carregar temporadas
 function carregarTemporadas() {
-  getDados(`/series/${serieId}/temporadas/todas`)
+  getDados(`/series/${serieId}/seasons/all`)
     .then((data) => {
       const temporadasUnicas = [
         ...new Set(data.map((temporada) => temporada.temporada)),
