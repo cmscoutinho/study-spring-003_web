@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.controller;
 
+import br.com.alura.screenmatch.dto.EpisodeDTO;
 import br.com.alura.screenmatch.dto.SeriesDTO;
 import br.com.alura.screenmatch.service.SeriesService;
 import org.springframework.beans.factory.annotation.Autowired;
