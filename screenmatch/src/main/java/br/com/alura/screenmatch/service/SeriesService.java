@@ -57,5 +57,8 @@ public class SeriesService {
     }
 
     public List<EpisodeDTO> getSeasonByNumber(Long id, Long epId) {
+        return repository.getEpisodesBySeason(id, epId).stream()
+                .map(e -> new EpisodeDTO(e.getSeason(), e.getEpisodeIdx(), e.getTitle()))
+                .collect(Collectors.toList());
     }
 }
