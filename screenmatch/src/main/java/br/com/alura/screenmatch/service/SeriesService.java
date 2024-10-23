@@ -55,4 +55,7 @@ public class SeriesService {
         }
         return null;
     }
+
+    public List<EpisodeDTO> getSeasonByNumber(Long id, Long epId) {
+    }
 }

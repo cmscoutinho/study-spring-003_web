@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.repository;
 
+import br.com.alura.screenmatch.dto.EpisodeDTO;
 import br.com.alura.screenmatch.model.Category;
 import br.com.alura.screenmatch.model.Episode;
 import br.com.alura.screenmatch.model.Series;
@@ -35,4 +36,9 @@ public interface SeriesRepository extends JpaRepository<Series, Long> {
     //List<Series> findTop5ByOrderByEpisodesReleaseDateDesc();
     @Query("SELECT s FROM Series s JOIN s.episodes e GROUP BY s ORDER BY MAX(e.releaseDate) DESC LIMIT 5")
     List<Series> mostRecentEpisodes();
+
+    @Query("SELECT e FROM Series s JOIN s.episodes e WHERE s.id = :id AND e.season = :epId")
+    List<Episode> getEpisodesBySeason(Long id, Long epId);
+
+    }
 }
