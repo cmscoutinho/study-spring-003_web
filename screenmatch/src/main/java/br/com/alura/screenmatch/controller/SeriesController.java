@@ -56,6 +56,6 @@ public class SeriesController {
 
     @GetMapping("/category/{categoryAlias}")
     public List<SeriesDTO> getSeriesByCategory(@PathVariable String categoryAlias) {
-
+        return service.getSeriesByCategory(categoryAlias);
     }
 }
