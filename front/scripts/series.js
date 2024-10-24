@@ -134,6 +134,7 @@ function carregarInfoSerie() {
 
 // Adiciona ouvinte de evento para o elemento select
 listaTemporadas.addEventListener('change', carregarEpisodios);
+listaTemporadas.addEventListener('change', carregarTopEpisodios);
 
 // Carrega as informações da série e as temporadas quando a página carrega
 carregarInfoSerie();
