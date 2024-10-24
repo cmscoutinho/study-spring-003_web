@@ -31,6 +31,11 @@ function carregarTemporadas() {
       optionTodos.value = 'all';
       optionTodos.textContent = 'Todas as temporadas';
       listaTemporadas.appendChild(optionTodos);
+
+      const optionTop5 = document.createElement('option');
+      optionTop5.value = 'top5';
+      optionTop5.textContent = 'Top 5 episódios';
+      listaTemporadas.appendChild(optionTop5);
     })
     .catch((error) => {
       console.error('Erro ao obter temporadas:', error);
