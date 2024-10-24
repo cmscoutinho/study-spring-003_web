@@ -61,4 +61,7 @@ public class SeriesService {
                 .map(e -> new EpisodeDTO(e.getSeason(), e.getEpisodeIdx(), e.getTitle()))
                 .collect(Collectors.toList());
     }
+
+    public List<SeriesDTO> getSeriesByCategory(String categoryAlias) {
+    }
 }
