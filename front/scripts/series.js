@@ -82,6 +82,8 @@ function carregarEpisodios() {
     });
 }
 
+function carregarTopEpisodios() {}
+
 // Função para carregar informações da série
 function carregarInfoSerie() {
   getDados(`/series/${serieId}`)
