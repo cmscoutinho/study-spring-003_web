@@ -2,6 +2,7 @@ package br.com.alura.screenmatch.service;
 
 import br.com.alura.screenmatch.dto.EpisodeDTO;
 import br.com.alura.screenmatch.dto.SeriesDTO;
+import br.com.alura.screenmatch.model.Category;
 import br.com.alura.screenmatch.model.Series;
 import br.com.alura.screenmatch.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,7 @@ public class SeriesService {
     }
 
     public List<SeriesDTO> getSeriesByCategory(String categoryAlias) {
+        Category category = Category.fromString(categoryAlias);
+        return convertData(repository.findByGenre(category));
     }
 }
