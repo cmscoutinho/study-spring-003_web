@@ -11,6 +11,7 @@ public class Quote {
     private Long id;
     private String title;
     private String quote;
+    private String character;
     private String poster;
 
     public Long getId() {
@@ -35,6 +36,14 @@ public class Quote {
 
     public void setQuote(String quote) {
         this.quote = quote;
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character;
     }
 
     public String getPoster() {
