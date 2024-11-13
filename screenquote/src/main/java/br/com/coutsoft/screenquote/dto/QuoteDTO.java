@@ -1,4 +1,7 @@
-package br.com.coutsoft.screenquote.dto;
+package br.com.coutsoft.screenquote.dto,
 
-public record QuoteDTO {
+public record QuoteDTO(String title,
+                       String quote,
+                       String character,
+                       String poster) {
 }
