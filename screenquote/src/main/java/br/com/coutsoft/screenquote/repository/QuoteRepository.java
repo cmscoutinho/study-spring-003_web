@@ -1,4 +1,7 @@
 package br.com.coutsoft.screenquote.repository;
 
-public interface QuoteRepository {
+import br.com.coutsoft.screenquote.model.Quote;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface QuoteRepository extends JpaRepository<Quote, Long> {
 }
