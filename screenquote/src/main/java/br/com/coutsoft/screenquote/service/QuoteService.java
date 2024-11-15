@@ -10,6 +10,6 @@ public class QuoteService {
     private QuoteRepository repository;
 
     public QuoteDTO getRandomQuote() {
-
+        return repository.getRandomQuote();
     }
 }
