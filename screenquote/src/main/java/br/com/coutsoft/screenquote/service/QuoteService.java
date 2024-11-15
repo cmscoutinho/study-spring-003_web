@@ -13,7 +13,7 @@ public class QuoteService {
     private QuoteRepository repository;
 
     public QuoteDTO getRandomQuote() {
-        Quote quote = repository.findById(4L).get();
+        Quote quote = repository.getRandomQuote();
         return new QuoteDTO(quote.getTitle(), quote.getQuote(), quote.getCharacter(), quote.getPoster());
     }
 }
