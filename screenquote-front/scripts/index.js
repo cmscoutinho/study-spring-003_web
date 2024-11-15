@@ -1,12 +1,12 @@
-import getDados from "./getDados.js";
+import getDados from './getDados.js';
 
 const btnSortear = document.querySelector('.btn-sortear');
 const fichaDescricao = document.getElementById('ficha-descricao');
 
 function carregarInfoSerie() {
-  getDados(`/series/frases`)
-      .then(data => {
-        fichaDescricao.innerHTML = `
+  getDados(`/series/quotes`)
+    .then((data) => {
+      fichaDescricao.innerHTML = `
               <img src="${data.poster}" alt="${data.titulo}" />
               <div>
                   <h2>${data.titulo}</h2>
@@ -16,12 +16,11 @@ function carregarInfoSerie() {
                   </div>
               </div>
           `;
-      })
-      .catch(error => {
-          console.error('Erro ao obter informações da série:', error);
-      });
+    })
+    .catch((error) => {
+      console.error('Erro ao obter informações da série:', error);
+    });
 }
-
 
 window.onload = carregarInfoSerie();
 btnSortear.addEventListener('click', carregarInfoSerie);
